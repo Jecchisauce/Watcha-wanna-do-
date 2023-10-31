@@ -57,6 +57,7 @@
             <option value="OTHER">Pili ka nalng</option>
         </select>
         <button id="proceed-button">Proceed</button>
+        <p id="activity-description" style="display: none;"></p>
     </div>
 
     <p id="happy-times" style="display: none">YAY! HAPPY TIMES.</p>
@@ -66,6 +67,8 @@
         const button2 = document.getElementById('botao2');
         const selectionBox = document.getElementById('selection-box');
         const happyTimes = document.getElementById('happy-times');
+        const activitySelector = document.getElementById('activity-selector');
+        const activityDescription = document.getElementById('activity-description');
 
         let left = 40;
         let topPosition = 40;
@@ -93,6 +96,13 @@
                 // Reload the page to start over
                 location.reload();
             }
+        });
+
+        activitySelector.addEventListener('change', function () {
+            const selectedOption = activitySelector.options[activitySelector.selectedIndex];
+            const activityDescriptionText = selectedOption.getAttribute('data-description');
+            activityDescription.textContent = activityDescriptionText;
+            activityDescription.style.display = 'block';
         });
 
         function getRandomLeft() {
