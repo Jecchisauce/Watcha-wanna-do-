@@ -22,16 +22,6 @@
         .button-container button {
             margin: 0 10px; /* Adjust the margin to control the spacing */
         }
-        .button-container button#botao1 {
-            position: absolute;
-            top: 50%;
-            left: 30%;
-        }
-        .button-container button#botao2 {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-        }
         .selection-box {
             display: none;
             text-align: center;
@@ -66,52 +56,28 @@
         const button1 = document.getElementById('botao1');
         const button2 = document.getElementById('botao2');
         const selectionBox = document.getElementById('selection-box');
-        const happyTimes = document.getElementById('happy-times');
         const activitySelector = document.getElementById('activity-selector');
         const activityDescription = document.getElementById('activity-description');
-
-        let left = 40;
-        let topPosition = 40;
-        let clicks = 0;
+        const proceedButton = document.getElementById('proceed-button');
+        const happyTimes = document.getElementById('happy-times');
 
         button1.addEventListener('click', function () {
-            if (clicks < 3) {
-                left = getRandomLeft();
-                top = getRandomTop();
-                button1.style.left = left + '%';
-                button1.style.top = topPosition + '%';
-                clicks++;
-            } else {
-                // Display the activity selection box
-                selectionBox.style.display = 'block';
-            }
+            button1.style.display = 'none';
+            button2.style.display = 'none';
+            selectionBox.style.display = 'block';
         });
 
         button2.addEventListener('click', function () {
             alert("I see, Sorry to bother you then.");
-            // Offer the option to retry or loop back to the question
-            const retry = confirm("Would you like to retry?");
-            if (retry) {
-                // Reload the page to start over
-                location.reload();
-            }
         });
 
-        activitySelector.addEventListener('change', function () {
+        proceedButton.addEventListener('click', function () {
             const selectedOption = activitySelector.options[activitySelector.selectedIndex];
             const activityDescriptionText = selectedOption.getAttribute('data-description');
             activityDescription.textContent = activityDescriptionText;
             activityDescription.style.display = 'block';
             happyTimes.style.display = 'block';
         });
-
-        function getRandomLeft() {
-            return Math.random() * 60; // Change this value to set the range of left positions.
-        }
-
-        function getRandomTop() {
-            return Math.random() * 60; // Change this value to set the range of top positions.
-        }
     </script>
 </body>
 </html>
