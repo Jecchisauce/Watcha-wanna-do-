@@ -3,8 +3,10 @@
 <head>
     <title>Button Game</title>
     <style>
-        p {
+        body {
             text-align: center;
+        }
+        p {
             font-size: 32px;
             font-family: Candara, Oswald;
         }
@@ -13,11 +15,27 @@
             margin: 0 auto;
             width: 25%;
         }
-        body {
-            position: relative;
+        .button-container {
+            display: flex;
+            justify-content: center;
         }
-        #botao1 {
+        .button-container button {
+            margin: 0 10px; /* Adjust the margin to control the spacing */
+        }
+        .button-container button#botao1 {
             position: absolute;
+            top: 50%;
+            left: 30%;
+        }
+        .button-container button#botao2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+        .selection-box {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -25,12 +43,30 @@
     <p>Can we hang out sometime?</p>
     <img src="https://media.tenor.com/zGm5acSjHCIAAAAM/cat-begging.gif">
 
-    <button id="botao1">YES!</button>
-    <button id="botao2">NO</button>
+    <div class="button-container">
+        <button id="botao1">YES!</button>
+        <button id="botao2">NO</button>
+    </div>
+
+    <div class="selection-box" id="selection-box">
+        <p>Choose an activity:</p>
+        <select id="activity-selector">
+            <option value="MAIMAI">Let's Go play maimai</option>
+            <option value="CAFE">Cafe Moment?</option>
+            <option value="WALK">Go for a walk</option>
+            <option value="OTHER">Pili ka nalng</option>
+        </select>
+        <button id="proceed-button">Proceed</button>
+    </div>
+
+    <p id="happy-times" style="display: none">YAY! HAPPY TIMES.</p>
 
     <script>
         const button1 = document.getElementById('botao1');
         const button2 = document.getElementById('botao2');
+        const selectionBox = document.getElementById('selection-box');
+        const happyTimes = document.getElementById('happy-times');
+
         let left = 40;
         let topPosition = 40;
         let clicks = 0;
@@ -44,11 +80,19 @@
                 clicks++;
             } else {
                 alert('YAY! HAPPY TIMES.');
+                // Display the activity selection box
+                selectionBox.style.display = 'block';
             }
         });
 
         button2.addEventListener('click', function () {
-            alert("Awwee, I guess next time :<");
+            alert("I see, Sorry to bother you then.");
+            // Offer the option to retry or loop back to the question
+            const retry = confirm("Would you like to retry?");
+            if (retry) {
+                // Reload the page to start over
+                location.reload();
+            }
         });
 
         function getRandomLeft() {
