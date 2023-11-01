@@ -46,6 +46,10 @@
             <option value="WALK" data-description="Let's go for a walk">WALK</option>
             <option value="OTHER" data-description="Pili ka nalng">Pili ka nalng</option>
         </select>
+
+        <label for="hangout-time">Select a time:</label>
+        <input type="time" id="hangout-time" required>
+
         <button id="proceed-button">Proceed</button>
         <p id="activity-description" style="display: none;"></p>
     </div>
@@ -63,7 +67,7 @@
 
         button1.addEventListener('click', function () {
             button1.style.display = 'none';
-            button2.style.display = 'none';
+            button2.style display = 'none';
             selectionBox.style.display = 'block';
         });
 
@@ -74,9 +78,15 @@
         proceedButton.addEventListener('click', function () {
             const selectedOption = activitySelector.options[activitySelector.selectedIndex];
             const activityDescriptionText = selectedOption.getAttribute('data-description');
-            activityDescription.textContent = activityDescriptionText;
-            activityDescription.style.display = 'block';
-            happyTimes.style.display = 'block';
+            const hangoutTime = document.getElementById('hangout-time').value;
+
+            if (hangoutTime) {
+                activityDescription.textContent = activityDescriptionText + " at " + hangoutTime;
+                activityDescription.style.display = 'block';
+                happyTimes.style.display = 'block';
+            } else {
+                alert("Please select a time for hanging out.");
+            }
         });
     </script>
 </body>
