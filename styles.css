@@ -1,0 +1,21 @@
+/* Body Styles */
+body {
+    background-color: #18c5ba;
+    font-family: Arial, sans-serif;
+}
+
+/* Header Styles */
+h1 {
+    color: #333;
+}
+
+/* Button Styles */
+button {
+    background-color: #1e8eb0;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Add more styles for specific elements as needed */
