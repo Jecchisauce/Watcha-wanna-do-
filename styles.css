@@ -1,21 +1,40 @@
-/* Body Styles */
 body {
     background-color: #18c5ba;
     font-family: Arial, sans-serif;
+    text-align: center;
 }
 
-/* Header Styles */
 h1 {
-    color: #333;
+    color: #b11616;
 }
 
-/* Button Styles */
 button {
     background-color: #1e8eb0;
     color: #fff;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
+}
+p {
+    font-size: 32px;
+    font-family: Candara, Oswald;
+}
+img {
+    display: block;
+    margin: 0 auto;
+    width: 25%;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+.button-container button {
+    margin: 0  15px; /* Adjust the margin to control the spacing */
+}
+.selection-box {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
 }
 .animate-bounce {
     animation: bounce 2s infinite;
@@ -32,6 +51,3 @@ button {
         transform: translateY(-15px);
     }
 }
-
-
-/* Add more styles for specific elements as needed */
